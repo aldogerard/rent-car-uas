@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 
 import NavigationBar from "./components/Fragments/NavigationBar";
+import Footer from "./components/Fragments/Footer/index.jsx";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/register" element={<RegisterPage />} />
             </Route>
           </Routes>
+          <Footer />
         </Router>
       </CssBaseline>
     </>
