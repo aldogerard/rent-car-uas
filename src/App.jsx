@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import DetailPage from "./pages/DetailPage";
 
 import { AuthProtected } from "./utils/authProtected";
 
@@ -20,6 +21,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/detail/:id" element={<DetailPage />} />
 
             <Route element={<AuthProtected />}>
               <Route path="/login" element={<LoginPage />} />

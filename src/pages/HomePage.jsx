@@ -1,20 +1,64 @@
-import React from "react";
-import Button from "@mui/material/Button";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-import { FaCircleCheck } from "react-icons/fa6";
-import IconButton from "@mui/material/IconButton";
+import { FaArrowRightLong, FaCircleCheck } from "react-icons/fa6";
+import axios from "axios";
 
 const HomePage = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#FBBF24",
-      },
-    },
-  });
+  const [datas, setDatas] = React.useState({});
+
+  const getDatas = async () => {
+    try {
+      const response = await axios.get("https://api-rent-car.vercel.app/product");
+      const data = response.data.data;
+      setDatas(data);
+    } catch (error) {
+      setDatas({});
+    }
+  };
+
+  const loadDatas = () => {
+    if (datas == null) return <h1>Loading ....</h1>;
+    if (datas.length == null) return <h1>Not Found</h1>;
+    return (
+      datas != null &&
+      datas.map((data) => (
+        <div key={data.id} className=" w-full md:w-[47%] lg:w-[32%]  flex flex-col items-center rounded-lg overflow-hidden shadow-sm border border-black/20">
+          <img src={data.url} alt="" className="w-full object-contain h-full" />
+          <div className=" w-full h-full px-4 py-2 ">
+            <h1 className="text-center pb-2 font-medium text-lg">{data.name}</h1>
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-4 ">
+              <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
+                <FaCircleCheck size={18} color="#FBBF24" />
+                <p>${data.price}</p>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-200 p-2 rounded-sm w-[47%]">
+                <FaCircleCheck size={18} color="#FBBF24" />
+                <p>{data.type}</p>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-200 p-2 rounded-sm w-[47%]">
+                <FaCircleCheck size={18} color="#FBBF24" />
+                <p>{data.brand}</p>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-200 p-2 rounded-sm w-[47%]">
+                <FaCircleCheck size={18} color="#FBBF24" />
+                <p>{data.year}</p>
+              </div>
+            </div>
+            <Link to={`/detail/${data.id}`} className="bg-primary mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500" type="submit">
+              Rent a car
+              <FaArrowRightLong size={14} />
+            </Link>
+          </div>
+        </div>
+      ))
+    );
+  };
+
+  useEffect(() => {
+    getDatas();
+  }, []);
+
   return (
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
@@ -32,7 +76,7 @@ const HomePage = () => {
             </div>
           </div>
         </section>
-        <section className="container py-12 w-full flex flex-wrap-reverse items-center px-4 md:px-0">
+        <section className="container py-8 w-full flex flex-wrap-reverse items-center px-4 md:px-0">
           <div className="w-full lg:w-1/2">
             <h3 className="text-xl lg:text-2xl text-primary font-semibold">About Us</h3>
             <h1 className="text-2xl lg:text-3xl font-bold">Welcome to Rent Car Service</h1>
@@ -61,6 +105,14 @@ const HomePage = () => {
           <div className="w-full lg:w-1/2">
             <img src="/images/about.png" alt="" className="w-2/3 lg:w-4/5 mx-auto" />
           </div>
+        </section>
+        <section className="container mx-auto w-full flex flex-wrap justify-center items-center bg-red-00 py-8 px-4 md:px-0">
+          <div>
+            <h1 className="text-2xl lg:text-3xl font-semibold ">
+              Our <span className="text-primary font-bold">Cars</span>
+            </h1>
+          </div>
+          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 pb-60 gap-4">{loadDatas()}</div>
         </section>
       </main>
     </>
