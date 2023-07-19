@@ -6,7 +6,7 @@ const index = () => {
   return (
     <>
       <main className="bg-primary">
-        <section className="container flex flex-wrap gap-4 py-8">
+        <section className="container flex justify-between flex-wrap gap-4 py-8 px-4 md:px-0">
           <div className="w-full md:w-[47%] lg:w-[32%] flex flex-col items-start">
             <h1 className="text-2xl font-semibold pb-4">Rent Car Service</h1>
             <p className="text-black/70 text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore quos quibusdam, ullam voluptatum magni vitae fugit! At, nulla deleniti!</p>

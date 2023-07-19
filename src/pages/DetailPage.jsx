@@ -18,7 +18,7 @@ const DetailPage = () => {
     endDate: null,
   });
 
-  const duration = (new Date(value.endDate) - new Date(value.startDate)) / 1000 / 60 / 60 / 24 + 1;
+  const duration = (new Date(value.endDate) - new Date(value.startDate)) / 1000 / 60 / 60 / 24;
   const totalPrice = datas.price * duration;
 
   const tanggalOrder = () => {
@@ -47,6 +47,7 @@ const DetailPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getData();
   }, []);
 
@@ -90,6 +91,7 @@ const DetailPage = () => {
         hargaSewa: datas.price,
       });
       alert(post.data.message);
+      window.location.href = "/cars";
       window.location.reload(true);
 
       console.log(post.data);

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCircleCheck, FaClock, FaShieldHeart, FaUsersGear } from "react-icons/fa6";
 
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
@@ -41,20 +45,20 @@ const AboutPage = () => {
               Why <span className="text-primary font-bold">Choose Us</span>
             </h1>
             <div className="mt-14 flex flex-wrap gap-12 justify-center">
-              <div className="w-full flex flex-col items-center gap-4 md:w-[47%] lg:w-[30%]">
+              <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaShieldHeart size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">We Are Passionate</h1>
-                <p className="text-center text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
               </div>
-              <div className="w-full flex flex-col items-center gap-4 md:w-[47%] lg:w-[30%]">
+              <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaClock size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">Always On Time</h1>
-                <p className="text-center text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
               </div>
-              <div className="w-full flex flex-col items-center gap-4 md:w-[47%] lg:w-[30%]">
+              <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaUsersGear size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">Professional Services</h1>
-                <p className="text-center text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
               </div>
             </div>
           </div>

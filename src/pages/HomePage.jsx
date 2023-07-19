@@ -28,9 +28,9 @@ const HomePage = () => {
           i < 6 && (
             <div key={data.id} className=" w-full md:w-[47%] lg:w-[32%]  flex flex-col items-center rounded-lg overflow-hidden shadow-sm border border-black/20">
               <img src={data.url} alt="" className="w-full object-contain h-full" />
-              <div className=" w-full h-full px-4 py-2 ">
+              <div className=" w-full h-full px-4 pb-2 flex flex-col justify-end">
                 <h1 className="text-center pb-2 font-medium text-lg">{data.name}</h1>
-                <div className="flex flex-wrap items-center justify-between gap-4 pb-4 ">
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-4">
                   <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
                     <FaCircleCheck size={18} color="#FBBF24" />
                     <p>${data.price}</p>
@@ -64,6 +64,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getDatas();
   }, []);
 
@@ -78,7 +79,7 @@ const HomePage = () => {
                 Reserved Now and Get 50% <br />
                 Off
               </h1>
-              <Link to="/about">
+              <Link to="/cars">
                 <div className="bg-primary w-36 py-2 text-center text-black rounded-md">Reserve Now</div>
               </Link>
             </div>
@@ -121,7 +122,7 @@ const HomePage = () => {
             </h1>
           </div>
           <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">{loadDatas()}</div>
-          <Link to={`/about`} className="bg-primary mb-2 flex justify-center items-center gap-2 w-40 py-2 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500" type="submit">
+          <Link to={`/cars`} className="bg-primary mb-2 flex justify-center items-center gap-2 w-40 py-2 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500" type="submit">
             View More...
           </Link>
         </section>

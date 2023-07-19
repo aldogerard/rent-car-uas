@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AuthLayout = ({ children, title }) => {
@@ -12,6 +12,10 @@ const AuthLayout = ({ children, title }) => {
       </p>
     );
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

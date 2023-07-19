@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { Navigate } from "react-router-dom";
 
 const index = () => {
   const [datas, setDatas] = React.useState({});
@@ -26,11 +25,6 @@ const index = () => {
 
       sessionStorage.setItem("auth", JSON.stringify(response.data));
 
-      // sessionStorage.setItem("id", response.data.id);
-      // sessionStorage.setItem("token", response.data.token);
-      // sessionStorage.setItem("role", response.data.role);
-      // sessionStorage.setItem("email", response.data.email);
-
       setTimeout(() => {
         setMessage("");
         setStatus("");
@@ -45,7 +39,7 @@ const index = () => {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className={` transition-all duration-500 w-full py-3 text-center text-black rounded-md ${message === "" ? "hidden" : "block"} ${status == 400 ? "bg-red-200" : "bg-green-200"} `} type="submit">
+        <div className={` transition-all duration-500 w-full py-3 text-center text-black rounded-md ${message === "" ? "hidden" : "block"} ${status != 200 ? "bg-red-200" : "bg-green-200"} `} type="submit">
           {message}
         </div>
         <input

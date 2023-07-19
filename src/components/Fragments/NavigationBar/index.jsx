@@ -12,7 +12,6 @@ const index = () => {
   useEffect(() => {
     setDatas(JSON.parse(sessionStorage.getItem("auth")));
     if (import.meta.env.VITE_REACT_APP_TOKEN === datas.token) return setDatas(JSON.parse(sessionStorage.getItem("auth")));
-    // if (import.meta.env.VITE_REACT_APP_TOKEN === sessionStorage.getItem("token")) return setemail(sessionStorage.getItem("email"));
     return setDatas("");
   }, [sessionStorage.getItem("auth")]);
 
@@ -21,11 +20,6 @@ const index = () => {
     if (!confirm) return;
 
     sessionStorage.clear();
-
-    // sessionStorage.removeItem("token");
-    // sessionStorage.removeItem("id");
-    // sessionStorage.removeItem("role");
-    // sessionStorage.removeItem("email");
 
     window.location.reload(true);
   };
@@ -76,7 +70,7 @@ const index = () => {
                 <Link to="/about">About</Link>
               </li>
               <li className="py-6 lg:py-0 lg:pt-0">
-                <Link to="/about">Cars</Link>
+                <Link to="/cars">Cars</Link>
               </li>
               <li className="py-6 lg:py-0 lg:pt-0">
                 <Link to="/about">Riwayat</Link>

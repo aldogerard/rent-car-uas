@@ -11,7 +11,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
 
-import { AuthProtected } from "./utils/authProtected";
+import { AuthProtected, OrderProtected } from "./utils/RouteProtected";
+import CarsPage from "./pages/CarsPage";
 
 const App = () => {
   return (
@@ -22,7 +23,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/detail/:id" element={<DetailPage />} />
+            <Route path="/cars" element={<CarsPage />} />
+
+            <Route element={<OrderProtected />}>
+              <Route path="/detail/:id" element={<DetailPage />} />
+            </Route>
 
             <Route element={<AuthProtected />}>
               <Route path="/login" element={<LoginPage />} />
