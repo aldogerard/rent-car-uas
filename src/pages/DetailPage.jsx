@@ -83,7 +83,7 @@ const DetailPage = () => {
 
   const orderCar = async () => {
     try {
-      const post = await axios.post("https://api-rent-car.vercel.app/order", {
+      const post = await axios.post("http://localhost:3000/order", {
         idUser,
         idMobil: id,
         tanggalOrder: tanggalOrder(),
@@ -91,8 +91,8 @@ const DetailPage = () => {
         hargaSewa: datas.price,
       });
       alert(post.data.message);
-      window.location.href = "/cars";
       window.location.reload(true);
+      window.location.href = "/history";
 
       console.log(post.data);
     } catch (error) {
@@ -127,6 +127,12 @@ const DetailPage = () => {
               <FaCircleCheck size={18} color="#FBBF24" />
               <p>{datas.brand}</p>
             </div>
+            {/* <div className="flex items-center gap-2 bg-white border border-black/20 w-full rounded-sm p-2">
+              <input type="date" className="w-full px-2 focus:outline-none text-sm text-black/70" />
+            </div>
+            <div className="flex items-center gap-2 bg-white border border-black/20 w-full rounded-sm p-2">
+              <input type="date" className="w-full px-2 focus:outline-none text-sm text-black/70" />
+            </div> */}
           </div>
           {!check && (
             <>
@@ -184,7 +190,7 @@ const DetailPage = () => {
   return (
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
-        <section className="container px-4  py-14">{loadDatas()}</section>
+        <section className="container px-4 md:px-0 py-14">{loadDatas()}</section>
       </main>
     </>
   );

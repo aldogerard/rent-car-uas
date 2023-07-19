@@ -10,5 +10,12 @@ export const AuthProtected = () => {
 export const OrderProtected = () => {
   const datas = JSON.parse(sessionStorage.getItem("auth")) || "";
 
-  return import.meta.env.VITE_REACT_APP_TOKEN === datas.token ? <Outlet /> : <Navigate to="/cars" />;
+  return import.meta.env.VITE_REACT_APP_TOKEN === datas.token ? <Outlet /> : <Navigate to="/" />;
+};
+
+export const RoleProtected = () => {
+  const datas = JSON.parse(sessionStorage.getItem("auth")) || "";
+
+  if (datas == "") return <Outlet />;
+  return import.meta.env.VITE_REACT_APP_TOKEN === datas.token && datas.role === "customer" ? <Outlet /> : <Navigate to="*" />;
 };

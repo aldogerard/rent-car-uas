@@ -10,3 +10,18 @@
 .container {
   @apply max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto;
 }
+
+.btn {
+  @apply w-36 rounded-lg  py-4  text-sm font-medium text-gray-700 transition-colors duration-100 hover:bg-white md:w-44 md:text-base;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

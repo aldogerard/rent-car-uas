@@ -22,11 +22,12 @@ const index = () => {
     sessionStorage.clear();
 
     window.location.reload(true);
+    window.location.href = "/";
   };
 
   return (
     <>
-      <header className="w-full bg-white z-[99999px] fixed border-b border-black">
+      <header className="w-full bg-white z-[99999px]  fixed border-b border-black">
         <div className="hidden container md:flex justify-between py-6">
           <div className="flex flex-row jc-center items-center gap-2">
             <FaCarRear size={25} />
@@ -72,11 +73,13 @@ const index = () => {
               <li className="py-6 lg:py-0 lg:pt-0">
                 <Link to="/cars">Cars</Link>
               </li>
+              {datas != "" && (
+                <li className="py-6 lg:py-0 lg:pt-0">
+                  <Link to="/history">History</Link>
+                </li>
+              )}
               <li className="py-6 lg:py-0 lg:pt-0">
-                <Link to="/about">Riwayat</Link>
-              </li>
-              <li className="py-6 lg:py-0 lg:pt-0">
-                <Link to="/about">Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
 
