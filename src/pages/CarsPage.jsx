@@ -23,7 +23,7 @@ const CarsPage = () => {
   }, []);
 
   const loadDatas = () => {
-    if (datas == null) return <h1>Loading ....</h1>;
+    if (datas == {}) return <h1>Loading ....</h1>;
     if (datas.length == null) return <h1>Not Found</h1>;
     return (
       datas != null &&

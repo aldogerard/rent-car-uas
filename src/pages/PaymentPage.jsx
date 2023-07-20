@@ -11,16 +11,21 @@ const PaymentPage = () => {
   const [message, setMessage] = React.useState("");
   const [status, setStatus] = React.useState("");
 
+  const [statusPayment, setStatusPayment] = useState("");
+
   const getData = async () => {
     const response = await axios.get(`https://api-rent-car.vercel.app/order/${id}`);
     const data = response.data.data;
+
+    setStatusPayment(data.status);
     setDatas(data);
     setIsLoading(false);
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getData();
-  });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,10 +58,10 @@ const PaymentPage = () => {
   return (
     <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
       <section className="container px-4 md:px-0 py-14">
-        <h1 className="text-3xl font-semibold text-left mb-6">Payment</h1>
+        {statusPayment == "proses" && <h1 className="text-3xl font-semibold text-left mb-6">Payment</h1>}
         {loading && <h1>Loading....</h1>}
         {datas == null && <h1>Payment not found</h1>}
-        {loading === false && datas != null && (
+        {loading === false && datas != null && statusPayment === "pending" ? (
           <div className="flex flex-col lg:flex-row lg:items-center justify-center w-full py-2 pb-4">
             <img src={datas.responseMobil.url} alt="pict car" className="w-full lg:w-1/2 object-contain h-52" />
             <div className="flex flex-col lg:w-1/2">
@@ -108,6 +113,8 @@ const PaymentPage = () => {
               </div>
             </div>
           </div>
+        ) : (
+          <h1 className="text-2xl lg:text-4xl py-12 text-center font-semibold">Payment already done</h1>
         )}
       </section>
     </main>

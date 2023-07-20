@@ -13,7 +13,7 @@ const index = () => {
           </div>
           <div className="w-full md:w-[47%] lg:w-[32%] ">
             <h1 className="text-2xl font-semibold pb-4">Our Cars</h1>
-            <Link to="/about" className="flex flex-col gap-2 text-black/70 font-medium">
+            <Link to="/about" className="flex flex-col gap-2 w-max text-black/70 font-medium">
               <h1>New Fortuner Sport</h1>
               <h1>Land Cruiser</h1>
               <h1>New Hiace Commuter</h1>

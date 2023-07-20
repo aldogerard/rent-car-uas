@@ -23,6 +23,7 @@ const index = () => {
       alert(error);
     }
     e.target.reset();
+    window.location.href = "/login";
   };
 
   return (
@@ -88,7 +89,7 @@ const index = () => {
           name="alamat"
           required
           maxLength={80}
-          placeholder="Alamat*"
+          placeholder="Address*"
           className="w-full md:w-[48%] placeholder:text-base px-3 py-4 focus:outline-none shadow-sm border border-black/30 rounded-md text-base resize-none"
           autoComplete="off"
           onChange={(e) => setDatas({ ...datas, alamat: e.target.value })}

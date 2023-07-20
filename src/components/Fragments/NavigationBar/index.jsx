@@ -99,7 +99,7 @@ const index = () => {
                     Logout
                   </h1>
                   |
-                  <Link to="/about" className="flex flex-row items-center gap-1 text-sm">
+                  <Link to="/profile" className="flex flex-row items-center gap-1 text-sm">
                     {/* <FaUserLarge size={12} /> */}
                     {datas.email}
                   </Link>

@@ -17,6 +17,8 @@ import CarsPage from "./pages/CarsPage";
 import PaymentPage from "./pages/PaymentPage";
 import NotFoundPages from "./pages/_404";
 import ContactPage from "./pages/ContactPage";
+import ProfilePage from "./pages/ProfilePage";
+import EditProfilePage from "./pages/EditProfilePage";
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
                 <Route path="/detail/:id" element={<DetailPage />} />
                 <Route path="/history" element={<HistoryPage />} />
                 <Route path="/payment/:id" element={<PaymentPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile/edit" element={<EditProfilePage />} />
               </Route>
 
               <Route element={<AuthProtected />}>

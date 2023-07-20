@@ -21,7 +21,7 @@ const DetailPage = () => {
   const duration = (new Date(value.endDate) - new Date(value.startDate)) / 1000 / 60 / 60 / 24;
   const totalPrice = datas.price * duration;
 
-  const tanggalOrder = () => {
+  const getTanggalOrder = () => {
     const dateSewa = [];
     const hari = 24 * 60 * 60 * 1000;
 
@@ -62,11 +62,12 @@ const DetailPage = () => {
       return;
     }
 
+    const tanggalOrder = getTanggalOrder();
+
     const response = await axios.post(`https://api-rent-car.vercel.app/order/check/${id}`, {
-      tanggalOrder: [value.startDate, value.endDate],
+      tanggalOrder,
     });
     const datas = response.data;
-    console.log(datas);
 
     setMessage(datas.message);
     setStatus(datas.status);
@@ -83,10 +84,10 @@ const DetailPage = () => {
 
   const orderCar = async () => {
     try {
-      const post = await axios.post("http://localhost:3000/order", {
+      const post = await axios.post("https://api-rent-car.vercel.app/order", {
         idUser,
         idMobil: id,
-        tanggalOrder: tanggalOrder(),
+        tanggalOrder: getTanggalOrder(),
         totalHarga: totalPrice,
         hargaSewa: datas.price,
       });

@@ -7,6 +7,7 @@ const HistoryPage = () => {
   const { id } = JSON.parse(sessionStorage.getItem("auth"));
   const [datas, setDatas] = useState([]);
 
+  console.log(datas);
   const [filter, setFilter] = useState("pending");
 
   const [loading, setIsLoading] = useState(true);
@@ -72,7 +73,7 @@ const HistoryPage = () => {
                   </Link>
                 )}
                 {data.status === "selesai" && (
-                  <Link to="/cars" className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
+                  <Link to={`/detail/${data.idMobil}`} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
                     Order again
                     <FaArrowRightLong size={14} />
                   </Link>
