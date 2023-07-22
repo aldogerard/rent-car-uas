@@ -65,7 +65,7 @@ const EditProfilePage = () => {
               </div>
 
               <div className="flex items-center w-full justify-center gap-2 font-light text-gray-900">
-                {newData !== {} && (
+                {newData != {} && (
                   <form onSubmit={handleSubmit} className="flex flex-wrap md:max-w-lg justify-between gap-y-3 w-full lg:max-w-5xl">
                     <div className={` transition-all duration-500 w-full py-3 text-center text-black rounded-md ${message === "" ? "hidden" : "block"} ${status != 200 ? "bg-red-200" : "bg-green-200"} `} type="submit">
                       {message}

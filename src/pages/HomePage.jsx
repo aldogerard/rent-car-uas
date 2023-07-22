@@ -19,8 +19,7 @@ const HomePage = () => {
   };
 
   const loadDatas = () => {
-    if (datas == null) return <h1>Loading ....</h1>;
-    if (datas.length == null) return <h1>Not Found</h1>;
+    if (datas.length == null) return <h1 className="text-2xl font-light py-6 mx-auto">Loading ....</h1>;
     return (
       datas != null &&
       datas.map(

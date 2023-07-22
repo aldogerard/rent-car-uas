@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 
 const ContactPage = () => {
@@ -5,11 +6,27 @@ const ContactPage = () => {
     window.scrollTo(0, 0);
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for your message!");
 
-    e.target.reset();
+    try {
+      const post = await axios.post("https://api-rent-car.vercel.app/message", {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+      });
+
+      const response = post.data;
+
+      if (response.status === 200) {
+        e.target.reset();
+        return alert(`Thank you ${e.target.name.value} for your message!`);
+      } else {
+        return alert(`Sorry ${e.target.name.value} your message is not sent!`);
+      }
+    } catch (error) {
+      return alert(`Sorry ${e.target.name.value} your message is not sent!`);
+    }
   };
 
   return (

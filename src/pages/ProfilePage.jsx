@@ -23,7 +23,7 @@ const ProfilePage = () => {
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
         <div className="container px-4 md:px-0 flex flex-col items-center py-14 justify-center h-full text-black gap-6">
-          {data !== {} && (
+          {data != {} && (
             <>
               <div className="w-36">
                 <img src="/images/man.png" alt="" className="object contain object-center mx-auto" />
