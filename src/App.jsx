@@ -5,7 +5,7 @@ import { CssBaseline } from "@mui/material";
 import NavigationBar from "./components/Fragments/NavigationBar";
 import Footer from "./components/Fragments/Footer/index.jsx";
 
-import { AuthProtected, OrderProtected, RoleProtected } from "./utils/RouteProtected";
+import { AdminProtected, AuthProtected, OrderProtected, RoleProtected } from "./utils/RouteProtected";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -19,13 +19,27 @@ import NotFoundPages from "./pages/_404";
 import ContactPage from "./pages/ContactPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditProfilePage from "./pages/EditProfilePage";
+import AdminDashboardPage from "./pages/Admin/AdminDashboardPage";
+import AdminUserPage from "./pages/Admin/AdminUserPage";
+import AdminOrderPage from "./pages/Admin/AdminOrderPage";
+import AdminCarsPage from "./pages/Admin/AdminCarsPage";
+import AdminEditCarsPage from "./pages/Admin/AdminEditCarsPage";
+import AdminAddCarsPage from "./pages/Admin/AdminAddCarsPage";
 
 const App = () => {
+  let role = "";
+
+  try {
+    role = JSON.parse(sessionStorage.getItem("auth")).role;
+  } catch {
+    role = "";
+  }
+
   return (
     <>
       <CssBaseline>
         <Router>
-          <NavigationBar />
+          {role !== "admin" && <NavigationBar />}
           <Routes>
             <Route element={<RoleProtected />}>
               <Route path="/" element={<HomePage />} />
@@ -47,9 +61,18 @@ const App = () => {
               </Route>
             </Route>
 
+            <Route element={<AdminProtected />}>
+              <Route path="/admin" element={<AdminDashboardPage />} />
+              <Route path="/admin/users" element={<AdminUserPage />} />
+              <Route path="/admin/order" element={<AdminOrderPage />} />
+              <Route path="/admin/cars" element={<AdminCarsPage />} />
+              <Route path="/admin/cars/:id" element={<AdminEditCarsPage />} />
+              <Route path="/admin/cars/add" element={<AdminAddCarsPage />} />
+            </Route>
+
             <Route path="*" element={<NotFoundPages />} />
           </Routes>
-          <Footer />
+          {role !== "admin" && <Footer />}
         </Router>
       </CssBaseline>
     </>

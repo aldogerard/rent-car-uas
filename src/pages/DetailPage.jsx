@@ -62,6 +62,16 @@ const DetailPage = () => {
       return;
     }
 
+    if (new Date(value.startDate).getTime() === new Date(value.endDate).getTime()) {
+      setMessage("Rent must be minimum 1 day");
+      setStatus(400);
+      setTimeout(() => {
+        setMessage("");
+        setStatus("");
+      }, 5000);
+      return;
+    }
+
     const tanggalOrder = getTanggalOrder();
 
     const response = await axios.post(`https://api-rent-car.vercel.app/order/check/${id}`, {
