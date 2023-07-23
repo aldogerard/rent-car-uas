@@ -49,7 +49,7 @@ const AdminCarsPage = () => {
     return cars.map((res, i) => (
       <tr key={res.id} className="text-sm border hover:bg-gray-100">
         <td className="capitalize p-4 ">
-          <img src={res.url} alt="" className="w-28 object-contain" />
+          <img src={res.url} alt="" className="w-28 min-w-[75px] object-contain" />
         </td>
         <td className=" p-4">{res.name}</td>
         <td className=" p-4">{res.brand}</td>
@@ -77,8 +77,8 @@ const AdminCarsPage = () => {
         </Link>
       </div>
       {message !== "" && <div className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${status == 200 ? "bg-green-200" : "bg-red-200"} `}>{message}</div>}
-      <div className="w-full flex flex-wrap overflow-x-auto ">
-        <table className="w-full bg-gray-50 rounded-lg overflow-hidden shadow-lg border-collapse">
+      <div className="w-full flex flex-wrap overflow-x-auto rounded-lg shadow-md">
+        <table className="w-full bg-gray-50 overflow-x-scroll border-collapse">
           <thead className="">
             <tr className="text-left border bg-gray-200 text-gray-600">
               <th className="p-4">Car</th>
@@ -92,7 +92,7 @@ const AdminCarsPage = () => {
           </thead>
           <tbody className="">
             {!isLoading && loadData()}
-            {cars.length === 0 && (
+            {cars == null && (
               <tr className=" ">
                 <td colSpan={5} className=" py-6 text-center ">
                   Cars not found

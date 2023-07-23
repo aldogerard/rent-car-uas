@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import SideBarAdmin from "../../components/Fragments/SideBarAdmin/index.jsx";
-import { getDataOrder } from "../../utils/api.js";
+import { getDataOrder, updateOrder } from "../../utils/api.js";
 
 import { FaArrowUpRightFromSquare, FaTrashCan } from "react-icons/fa6";
+import axios from "axios";
 
 const AdminOrderPage = () => {
   const [order, setOrder] = React.useState([]);
@@ -10,8 +11,15 @@ const AdminOrderPage = () => {
 
   const [filter, isFilter] = React.useState("pending");
 
+  const [status, setStatus] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    getOrder();
+  }, []);
+
+  const getOrder = () => {
     getDataOrder()
       .then((res) => {
         setOrder(res);
@@ -19,7 +27,7 @@ const AdminOrderPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  };
 
   const loadData = () => {
     let count = 0;
@@ -32,10 +40,50 @@ const AdminOrderPage = () => {
       return (
         <tr className=" ">
           <td colSpan={5} className=" py-6 text-center ">
-            Users not found
+            Order not found
           </td>
         </tr>
       );
+
+    const handleClickProcess = (id) => {
+      const confirm = window.confirm("Are you sure?");
+      if (!confirm) return;
+      updateOrder(id).then((res) => {
+        console.log(res);
+        setStatus(res.status);
+        setMessage(res.message);
+        if (res.status == 200) {
+          getOrder();
+          loadData();
+        }
+      });
+
+      setTimeout(() => {
+        setStatus("");
+        setMessage("");
+      }, 3000);
+    };
+
+    const handleClickSuccess = async (id) => {
+      const confirm = window.confirm("Are you sure?");
+      if (!confirm) return;
+
+      const data = await axios.delete(`https://api-rent-car.vercel.app/order/${id}`);
+      const res = data.data;
+      console.log(res);
+
+      setStatus(res.status);
+      setMessage(res.message);
+      if (res.status == 200) {
+        getOrder();
+        loadData();
+      }
+
+      setTimeout(() => {
+        setStatus("");
+        setMessage("");
+      }, 3000);
+    };
 
     return order.map(
       (res, i) =>
@@ -46,10 +94,24 @@ const AdminOrderPage = () => {
             <td className=" p-4">{res.tanggalOrder[0]}</td>
             <td className=" p-4">{res.tanggalOrder[res.tanggalOrder.length - 1]}</td>
             <td className=" p-4">
-              <div className="flex items-center gap-4">
-                <FaArrowUpRightFromSquare size={16} className="text-emerald-400 cursor-pointer" />
-                <FaTrashCan size={16} className=" text-rose-400 cursor-pointer" />
-              </div>
+              {filter === "pending" && (
+                <div onClick={() => handleClickProcess(res.id)} className="flex gap-2 cursor-pointer items-center justify-center rounded-md w-20 px-2 py-1 bg-rose-400">
+                  <h1 className="text-white font-medium">delete</h1>
+                  <FaTrashCan size={12} className="text-white" />
+                </div>
+              )}
+              {filter === "proses" && (
+                <div onClick={() => handleClickProcess(res.id)} className="flex gap-2 cursor-pointer items-center justify-center rounded-md w-20 px-2 py-1 bg-emerald-400">
+                  <h1 className="text-white font-medium">finish</h1>
+                  <FaArrowUpRightFromSquare size={12} className="text-white" />
+                </div>
+              )}
+              {filter === "selesai" && (
+                <div onClick={() => handleClickSuccess(res.id)} className="flex gap-2 cursor-pointer items-center justify-center rounded-md w-20 px-2 py-1 bg-rose-400">
+                  <h1 className="text-white font-medium">delete</h1>
+                  <FaTrashCan size={12} className="text-white" />
+                </div>
+              )}
             </td>
           </tr>
         )
@@ -72,8 +134,10 @@ const AdminOrderPage = () => {
           Success
         </h1>
       </div>
-      <div className="w-full flex flex-wrap overflow-x-auto">
-        <table className="w-full bg-gray-50 rounded-lg overflow-hidden shadow-lg border-collapse">
+      {message !== "" && <div className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${status == 200 ? "bg-green-200" : "bg-red-200"} `}>{message}</div>}
+
+      <div className="w-full flex flex-wrap overflow-x-auto rounded-lg shadow-md">
+        <table className="w-full bg-gray-50 border-collapse">
           <thead className="">
             <tr className="text-left border bg-gray-200 text-gray-600">
               <th className="p-4">Car</th>
@@ -84,8 +148,8 @@ const AdminOrderPage = () => {
             </tr>
           </thead>
           <tbody className="">
-            {!isLoading && loadData()}
-            {order.length === 0 && (
+            {!isLoading && order != null && loadData()}
+            {order == null && (
               <tr className=" ">
                 <td colSpan={5} className=" py-6 text-center ">
                   Order not found

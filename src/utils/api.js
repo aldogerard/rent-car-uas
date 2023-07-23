@@ -41,3 +41,9 @@ export const updateProduct = async (id, formData) => {
   const data = res.data;
   return data;
 };
+
+export const updateOrder = async (id) => {
+  const res = await axios.patch(`https://api-rent-car.vercel.app/order/${id}`);
+  const data = res.data;
+  return data;
+};

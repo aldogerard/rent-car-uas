@@ -27,12 +27,12 @@ const index = ({ children }) => {
           </Link>
 
           <main className=" flex flex-col gap-y-2">
-            <Link to="/admin" className={`flex gap-4 p-4 rounded-md hover:bg-gray-800 duration-300 items-center ${isOpen ? "justify-start" : "justify-start"} `}>
+            {/* <Link to="/admin" className={`flex gap-4 p-4 rounded-md hover:bg-gray-800 duration-300 items-center ${isOpen ? "justify-start" : "justify-start"} `}>
               <div className={`${!isOpen && "mx-auto"}`}>
                 <FaUser size={14} color="#eee" />
               </div>
               <h1 className={`${isOpen ? "" : "hidden"} text-sm md:text-md text-white`}>Profile</h1>
-            </Link>
+            </Link> */}
 
             <Link to="/admin/cars" className={`flex gap-4 p-4 rounded-md hover:bg-gray-800 duration-300 items-center ${isOpen ? "justify-start" : "justify-start"} `}>
               <div className={`${!isOpen && "mx-auto"}`}>
@@ -55,7 +55,7 @@ const index = ({ children }) => {
               <h1 className={`${isOpen ? "" : "hidden"} text-sm md:text-md text-white`}>Order</h1>
             </Link>
 
-            <Link to="/admin" className={`flex gap-4 p-4 rounded-md hover:bg-gray-800 duration-300 items-center ${isOpen ? "justify-start" : "justify-start"} `}>
+            <Link to="/admin/message" className={`flex gap-4 p-4 rounded-md hover:bg-gray-800 duration-300 items-center ${isOpen ? "justify-start" : "justify-start"} `}>
               <div className={`${!isOpen && "mx-auto"}`}>
                 <FaEnvelopeOpenText size={14} color="#eee" />
               </div>

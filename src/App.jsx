@@ -25,6 +25,7 @@ import AdminOrderPage from "./pages/Admin/AdminOrderPage";
 import AdminCarsPage from "./pages/Admin/AdminCarsPage";
 import AdminEditCarsPage from "./pages/Admin/AdminEditCarsPage";
 import AdminAddCarsPage from "./pages/Admin/AdminAddCarsPage";
+import AdminMessagePage from "./pages/Admin/AdminMessagePage";
 
 const App = () => {
   let role = "";
@@ -68,6 +69,7 @@ const App = () => {
               <Route path="/admin/cars" element={<AdminCarsPage />} />
               <Route path="/admin/cars/:id" element={<AdminEditCarsPage />} />
               <Route path="/admin/cars/add" element={<AdminAddCarsPage />} />
+              <Route path="/admin/message" element={<AdminMessagePage />} />
             </Route>
 
             <Route path="*" element={<NotFoundPages />} />

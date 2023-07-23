@@ -23,5 +23,6 @@ export const RoleProtected = () => {
   const datas = JSON.parse(sessionStorage.getItem("auth")) || "";
 
   if (datas == "") return <Outlet />;
+
   return import.meta.env.VITE_REACT_APP_TOKEN === datas.token && datas.role === "customer" ? <Outlet /> : <Navigate to="/admin" />;
 };
