@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SideBarAdmin from "../../components/Fragments/SideBarAdmin/index.jsx";
 import { getDataOrder, updateOrder } from "../../utils/api.js";
 
-import { FaArrowUpRightFromSquare, FaTrashCan } from "react-icons/fa6";
+import { FaCheck, FaTrashCan } from "react-icons/fa6";
 import axios from "axios";
 
 const AdminOrderPage = () => {
@@ -90,6 +90,7 @@ const AdminOrderPage = () => {
         res.status === filter && (
           <tr key={res.id} className="text-sm border hover:bg-gray-100">
             <td className="capitalize p-4 ">{res.responseMobil.name}</td>
+            <td className=" p-4">{res.responseUser.email}</td>
             <td className=" p-4">{res.responseUser.name}</td>
             <td className=" p-4">{res.tanggalOrder[0]}</td>
             <td className=" p-4">{res.tanggalOrder[res.tanggalOrder.length - 1]}</td>
@@ -103,7 +104,7 @@ const AdminOrderPage = () => {
               {filter === "proses" && (
                 <div onClick={() => handleClickProcess(res.id)} className="flex gap-2 cursor-pointer items-center justify-center rounded-md w-20 px-2 py-1 bg-emerald-400">
                   <h1 className="text-white font-medium">finish</h1>
-                  <FaArrowUpRightFromSquare size={12} className="text-white" />
+                  <FaCheck size={12} className="text-white" />
                 </div>
               )}
               {filter === "selesai" && (
@@ -141,6 +142,7 @@ const AdminOrderPage = () => {
           <thead className="">
             <tr className="text-left border bg-gray-200 text-gray-600">
               <th className="p-4">Car</th>
+              <th className="p-4">Email</th>
               <th className="p-4">Name</th>
               <th className="p-4">Start Rent</th>
               <th className="p-4">End Rent</th>

@@ -32,6 +32,7 @@ const AdminAddCarsPage = () => {
         e.target.reset();
         setData({});
         setCarPreview("");
+        setcarImage("");
       }
     });
 

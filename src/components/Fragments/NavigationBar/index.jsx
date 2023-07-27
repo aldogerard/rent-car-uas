@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 import { FaCarRear, FaEarthAmericas, FaClock, FaUserLarge, FaPhone, FaBars } from "react-icons/fa6";
 import { IoMenuSharp } from "react-icons/io5";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const index = () => {
+  const location = useLocation().pathname.split("/")[1];
+
   const [datas, setDatas] = React.useState(JSON.parse(sessionStorage.getItem("auth")) || "");
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -64,21 +66,21 @@ const index = () => {
                 isOpen ? "opacity-100 translate-x-[-22%]" : "opacity-0 translate-x-[-120%]"
               }`}
             >
-              <li className="py-6 pt-[25%] md:pt-[10%]  lg:py-0 lg:pt-0">
+              <li className={`py-6 pt-[25%] ${location == "" && "font-semibold"}   md:pt-[10%]  lg:py-0 lg:pt-0`}>
                 <Link to="/">Home</Link>
               </li>
-              <li className="py-6 lg:py-0 lg:pt-0">
+              <li className={`py-6 ${location == "about" && "font-semibold"} lg:py-0 lg:pt-0`}>
                 <Link to="/about">About</Link>
               </li>
-              <li className="py-6 lg:py-0 lg:pt-0">
+              <li className={`py-6 ${location == "cars" && "font-semibold"} lg:py-0 lg:pt-0`}>
                 <Link to="/cars">Cars</Link>
               </li>
               {datas != "" && (
-                <li className="py-6 lg:py-0 lg:pt-0">
+                <li className={`py-6 ${location == "history" && "font-semibold"} lg:py-0 lg:pt-0`}>
                   <Link to="/history">History</Link>
                 </li>
               )}
-              <li className="py-6 lg:py-0 lg:pt-0">
+              <li className={`py-6 ${location == "contact" && "font-semibold"} lg:py-0 lg:pt-0`}>
                 <Link to="/contact">Contact</Link>
               </li>
             </ul>

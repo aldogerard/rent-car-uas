@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Datepicker from "react-tailwindcss-datepicker";
+
+import { IoInformationCircleOutline } from "react-icons/io5";
 
 const DetailPage = () => {
   const id = useParams().id;
@@ -120,7 +122,12 @@ const DetailPage = () => {
         </div>
         <img src={datas.url} alt="" className="w-full lg:w-[47%] -z-20 lg:h-72 object-contain h-52 " />
         <div className="w-full lg:w-[47%] flex flex-col gap-1">
-          <h1 className="font-semibold text-4xl capitalize pb-2">{datas.name}</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="font-semibold text-4xl capitalize pb-2">{datas.name}</h1>
+            <Link to={`/info/${datas.id}`} className="cursor-pointer">
+              <IoInformationCircleOutline size={28} />
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center gap-4 capitalize justify-between">
             <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
               <FaCircleCheck size={18} color="#FBBF24" />

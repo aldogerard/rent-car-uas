@@ -15,15 +15,17 @@ const index = () => {
       const response = post.data;
       setMessage(response.message);
       setStatus(response.status);
-      setTimeout(() => {
-        setMessage("");
-        setStatus("");
-      }, 5000);
     } catch (error) {
       alert(error);
     }
     e.target.reset();
-    window.location.href = "/login";
+
+    setTimeout(() => {
+      setMessage("");
+      setStatus("");
+    }, 3000);
+
+    if (status == 200) window.location.href = "/login";
   };
 
   return (

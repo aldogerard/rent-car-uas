@@ -19,8 +19,8 @@ const AdminDashboardPage = () => {
     getDataCars().then((res) => setCars(res) || []);
     getDataOrder().then((res) => {
       setOrder(res || []);
-      setOrderProcess((res) => res.status === "proses" || []);
-      setOrderPending((res) => res.status === "pending" || []);
+      setOrderPending(res.filter((item) => item.status === "pending"));
+      setOrderProcess(res.filter((item) => item.status === "proses"));
     });
     getDataMessage().then((res) => setMessage(res || []));
   }, []);
