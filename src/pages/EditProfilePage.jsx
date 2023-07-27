@@ -39,7 +39,6 @@ const EditProfilePage = () => {
     const patch = await axios.patch(`https://api-rent-car.vercel.app/users/${id}`, newData);
 
     const response = patch.data;
-    console.log(response);
 
     setMessage(response.message);
     setStatus(response.status);

@@ -9,9 +9,8 @@ const InfoPage = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const getDataCars = async () => {
-    const data = await axios.get(`http://localhost:3000/order/cars/${id}`);
+    const data = await axios.get(`https://api-rent-car.vercel.app/order/cars/${id}`);
     const res = data.data.data;
-    console.log(res);
     setDatas(res != null ? res.sort((a, b) => new Date(a.tanggalOrder[0]).getTime() - new Date(b.tanggalOrder[0]).getTime()) : []);
     setIsLoading(false);
   };

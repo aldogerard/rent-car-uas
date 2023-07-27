@@ -7,7 +7,6 @@ const HistoryPage = () => {
   const { id } = JSON.parse(sessionStorage.getItem("auth"));
   const [datas, setDatas] = useState([]);
 
-  console.log(datas);
   const [filter, setFilter] = useState("pending");
 
   const [loading, setIsLoading] = useState(true);

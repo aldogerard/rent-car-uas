@@ -49,7 +49,6 @@ const AdminOrderPage = () => {
       const confirm = window.confirm("Are you sure?");
       if (!confirm) return;
       updateOrder(id).then((res) => {
-        console.log(res);
         setStatus(res.status);
         setMessage(res.message);
         if (res.status == 200) {
@@ -70,7 +69,6 @@ const AdminOrderPage = () => {
 
       const data = await axios.delete(`https://api-rent-car.vercel.app/order/${id}`);
       const res = data.data;
-      console.log(res);
 
       setStatus(res.status);
       setMessage(res.message);

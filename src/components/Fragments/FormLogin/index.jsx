@@ -12,8 +12,6 @@ const index = () => {
       const post = await axios.post("https://api-rent-car.vercel.app/login", datas);
       const response = post.data;
 
-      console.log(response);
-
       if (response.status == 200) {
         window.location.href = "/";
       }

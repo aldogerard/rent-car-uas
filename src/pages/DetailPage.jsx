@@ -106,8 +106,6 @@ const DetailPage = () => {
       alert(post.data.message);
       window.location.reload(true);
       window.location.href = "/history";
-
-      console.log(post.data);
     } catch (error) {
       alert(error);
     }
