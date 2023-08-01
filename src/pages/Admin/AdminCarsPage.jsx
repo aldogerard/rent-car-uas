@@ -51,7 +51,7 @@ const AdminCarsPage = () => {
     return cars.map((res, i) => (
       <tr key={res.id} className="text-sm border hover:bg-gray-100">
         <td className="capitalize p-4 ">
-          <img src={res.url} alt="" className="w-28 min-w-[75px] object-contain" />
+          <img src={res.url} alt="" className="w-[7rem] h-[5rem] object-contain" />
         </td>
         <td className=" p-4">{res.name}</td>
         <td className=" p-4">{res.brand}</td>

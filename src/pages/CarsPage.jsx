@@ -29,7 +29,7 @@ const CarsPage = () => {
       datas != null &&
       datas.map((data, i) => (
         <div key={data.id} className=" w-full md:w-[47%] lg:w-[32%]  flex flex-col items-center rounded-lg overflow-hidden shadow-sm border border-black/20">
-          <img src={data.url} alt="" className="w-full object-contain h-full" />
+          <img src={data.url} alt="" className="w-full object-contain h-full min-h-[12rem] max-h-[15rem] p-2 " />
           <div className=" w-full h-full px-4 pb-2 flex flex-col justify-end">
             <h1 className="text-center pb-2 font-medium text-lg">{data.name}</h1>
             <div className="flex flex-wrap items-center justify-between gap-4 pb-4">

@@ -66,7 +66,7 @@ const AdminEditCarsPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="flex flex-wrap">
             <div className="flex mx-auto justify-center flex-wrap gap-6">
-              <img src={carPreview} alt="" className="w-64 object-contain" />
+              <img src={carPreview} alt="preview" className="w-64 h-36 object-contain" />
               <label htmlFor="carImage">
                 <div className="bg-gray-100 px-6 cursor-pointer h-36 flex justify-center items-center border-dashed border border-black/50 rounded-lg">
                   <h1 className="text-sm font-light">Select Car Image</h1>

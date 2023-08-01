@@ -58,7 +58,7 @@ const AdminAddCarsPage = () => {
           <div className="flex flex-wrap">
             <div className="flex mx-auto justify-center flex-wrap gap-6">
               <div className="flex flex-col items-center">
-                <img src={carPreview} alt="" className="w-64 object-contain" />
+                <img src={carPreview} alt="" className="w-64 max-h-[9rem] object-contain " />
                 <p className="tetx-center text-sm">{carImage.name}</p>
               </div>
 
