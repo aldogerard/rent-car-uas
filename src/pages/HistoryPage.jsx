@@ -1,3 +1,4 @@
+import { FormatRupiah } from "@arismun/format-rupiah";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -56,13 +57,13 @@ const HistoryPage = () => {
                 <div className="flex flex-col w-[47%]">
                   <h1 className="text-sm font-normal">Total Price</h1>
                   <div className="flex items-center bg-gray-200 rounded-sm p-2">
-                    <p>${data.hargaSewa}/day</p>
+                    <FormatRupiah value={data.hargaSewa} />
                   </div>
                 </div>
                 <div className="flex flex-col w-[47%]">
                   <h1 className="text-sm font-normal">Total Price</h1>
                   <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2">
-                    <p>${data.totalHarga}</p>
+                    <FormatRupiah value={data.totalHarga} />
                   </div>
                 </div>
                 {data.status === "pending" && (

@@ -5,6 +5,7 @@ import { getDataCars, getDataCarsById } from "../../utils/api.js";
 import { FaArrowUpRightFromSquare, FaTrashCan } from "react-icons/fa6";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 const AdminCarsPage = () => {
   const [cars, setCars] = React.useState([]);
@@ -21,7 +22,8 @@ const AdminCarsPage = () => {
   const getCars = () => {
     getDataCars()
       .then((res) => {
-        setCars(res);
+        // setCars(res);
+        setCars(res != null ? res.sort((a, b) => a.price - b.price) : {});
       })
       .finally(() => {
         setIsLoading(false);
@@ -55,7 +57,9 @@ const AdminCarsPage = () => {
         <td className=" p-4">{res.brand}</td>
         <td className=" p-4">{res.type}</td>
         <td className=" p-4">{res.year}</td>
-        <td className=" p-4">{res.price}</td>
+        <td className=" p-4">
+          <FormatRupiah value={res.price} />
+        </td>
         <td className=" p-4">
           <div className="flex items-center gap-4">
             <Link to={`/admin/cars/${res.id}`}>

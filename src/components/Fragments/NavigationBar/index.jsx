@@ -29,7 +29,7 @@ const index = () => {
 
   return (
     <>
-      <header className="w-full bg-white z-[99999px]  fixed border-b border-black">
+      <header className="w-full bg-white z-[99999px]  fixed ">
         <div className="hidden container md:flex justify-between py-6">
           <div className="flex flex-row jc-center items-center gap-2">
             <FaCarRear size={25} />
@@ -59,7 +59,7 @@ const index = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-primary">
+        <div className=" bg-primary border-b border-black">
           <nav className=" py-4 lg:py-3 container px-4 md:px-0 z-50 flex flex-row justify-between">
             <ul
               className={`justify-between absolute lg:flex z-[1500px] transition-all lg:px-0 bg-primary translate-y-8 lg:translate-y-0 w-full lg:w-0 flex-col lg:relative lg:flex-row gap-10 lg:h-full h-screen py-3 lg:py-0 text-lg lg:text-sm duration-500 text-center lg:translate-x-0 lg:opacity-100 ${

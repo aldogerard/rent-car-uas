@@ -12,7 +12,7 @@ const AboutPage = () => {
         <section className="container py-8 w-full flex flex-wrap-reverse items-center px-4 md:px-0">
           <div className="w-full lg:w-1/2">
             <h3 className="text-xl lg:text-2xl text-primary font-semibold">About Us</h3>
-            <h1 className="text-2xl lg:text-3xl font-bold">Welcome to Rent Car Service</h1>
+            <h1 className="text-2xl lg:text-3xl font-bold">Welcome to Rent Car Services</h1>
             <p className="text-gray-500 font-light text-sm mt-2">Kami menyediakan layanan rental mobil dengan kualitas terbaik serta durasi yang flexibel agar pengguna dapat merasak nyaman saat merental mobil</p>
             <div className="text-gray-500 font-light text-xs lg:text-sm mt-4 flex flex-wrap gap-y-2 ">
               <div className="flex items-center gap-2 w-1/2">

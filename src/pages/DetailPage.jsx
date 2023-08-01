@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Datepicker from "react-tailwindcss-datepicker";
 
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 const DetailPage = () => {
   const id = useParams().id;
@@ -129,7 +130,7 @@ const DetailPage = () => {
           <div className="flex flex-wrap items-center gap-4 capitalize justify-between">
             <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
               <FaCircleCheck size={18} color="#FBBF24" />
-              <p>${datas.price}</p>
+              <FormatRupiah value={datas.price} />
             </div>
             <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
               <FaCircleCheck size={18} color="#FBBF24" />
@@ -184,13 +185,13 @@ const DetailPage = () => {
               <div className="flex gap-2 flex-col w-[47%]">
                 <h1 className="font-medium">Price</h1>
                 <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 ">
-                  <p>${datas.price}/day</p>
+                  <FormatRupiah value={datas.price} />
                 </div>
               </div>
               <div className="flex gap-2 flex-col w-[47%]">
                 <h1 className="font-medium">Total Price</h1>
                 <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 ">
-                  <p>${totalPrice}</p>
+                  <FormatRupiah value={totalPrice} />
                 </div>
               </div>
               <button onClick={orderCar} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">

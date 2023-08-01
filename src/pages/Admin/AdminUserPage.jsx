@@ -26,7 +26,7 @@ const AdminUserPage = () => {
     setStatus(res.status);
     setMessage(res.message);
     if (res.status == 200) {
-      getDataUsers().then((res) => setUsers(res));
+      getDataUsers().then((res) => setUsers(res) || []);
     }
 
     setTimeout(() => {

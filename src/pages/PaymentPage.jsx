@@ -1,3 +1,4 @@
+import { FormatRupiah } from "@arismun/format-rupiah";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -87,13 +88,13 @@ const PaymentPage = () => {
                 <div className="flex flex-col w-[47%]">
                   <h1 className="text-sm font-normal">Total Price</h1>
                   <div className="flex items-center bg-gray-200 rounded-sm p-2">
-                    <p>${datas.hargaSewa}/day</p>
+                    <FormatRupiah value={datas.hargaSewa} />
                   </div>
                 </div>
                 <div className="flex flex-col w-[47%]">
                   <h1 className="text-sm font-normal">Total Price</h1>
                   <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2">
-                    <p>${datas.totalHarga}</p>
+                    <FormatRupiah value={datas.totalHarga} />
                   </div>
                 </div>
                 <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
@@ -102,7 +103,7 @@ const PaymentPage = () => {
                     id="moneyPayment"
                     name="moneyPayment"
                     required
-                    placeholder="$ input your money here"
+                    placeholder="input your money here"
                     className="w-full placeholder:text-base mt-1 px-4 py-3 focus:outline-none shadow-sm border border-black/30 rounded-md text-base"
                     autoComplete="off"
                   />

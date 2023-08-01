@@ -1,3 +1,4 @@
+import { FormatRupiah } from "@arismun/format-rupiah";
 import axios from "axios";
 import React from "react";
 import { FaArrowRightLong, FaCircleCheck } from "react-icons/fa6";
@@ -11,7 +12,7 @@ const CarsPage = () => {
     try {
       const response = await axios.get("https://api-rent-car.vercel.app/product");
       const data = response.data.data;
-      setDatas(data);
+      setDatas(data != null ? data.sort((a, b) => a.price - b.price) : {});
     } catch (error) {
       setDatas({});
     }
@@ -34,7 +35,7 @@ const CarsPage = () => {
             <div className="flex flex-wrap items-center justify-between gap-4 pb-4">
               <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
                 <FaCircleCheck size={18} color="#FBBF24" />
-                <p>${data.price}</p>
+                <FormatRupiah value={data.price} />
               </div>
               <div className="flex items-center gap-2 bg-gray-200 p-2 rounded-sm w-[47%]">
                 <FaCircleCheck size={18} color="#FBBF24" />

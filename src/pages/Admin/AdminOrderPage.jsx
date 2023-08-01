@@ -22,7 +22,7 @@ const AdminOrderPage = () => {
   const getOrder = () => {
     getDataOrder()
       .then((res) => {
-        setOrder(res);
+        setOrder(res != null ? res.sort((a, b) => new Date(a.tanggalOrder[0]).getTime() - new Date(b.tanggalOrder[0]).getTime()) : []);
       })
       .finally(() => {
         setIsLoading(false);
