@@ -9,7 +9,7 @@ const index = () => {
         <section className="container flex justify-between flex-wrap gap-4 py-8 px-4 md:px-0">
           <div className="w-full md:w-[47%] lg:w-[32%] flex flex-col items-start">
             <h1 className="text-2xl font-semibold pb-4">Rent Car Service</h1>
-            <p className="text-black/70 text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore quos quibusdam, ullam voluptatum magni vitae fugit! At, nulla deleniti!</p>
+            <p className="text-black/70 text-sm">We aim to offer car rental services of the highest quality, with flexible duration options, to ensure that our users feel completely comfortable throughout their car rental experience</p>
           </div>
           <div className="w-full md:w-[47%] lg:w-[32%] ">
             <h1 className="text-2xl font-semibold pb-4">Our Cars</h1>

@@ -19,19 +19,19 @@ const AboutPage = () => {
             <div className="text-gray-500 font-light text-xs lg:text-sm mt-4 flex flex-wrap gap-y-2 ">
               <div className="flex items-center gap-2 w-1/2">
                 <FaCircleCheck size={12} color="#FBBF24" />
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Deals For Every Budget</p>
               </div>
               <div className="flex items-center gap-2 w-1/2">
                 <FaCircleCheck size={12} color="#FBBF24" />
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Best Price Guaranteed</p>
               </div>
               <div className="flex items-center gap-2 w-1/2">
                 <FaCircleCheck size={12} color="#FBBF24" />
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Support 24/7</p>
               </div>
               <div className="flex items-center gap-2 w-1/2">
                 <FaCircleCheck size={12} color="#FBBF24" />
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>High quality service</p>
               </div>
             </div>
           </div>

@@ -74,7 +74,7 @@ const HomePage = () => {
         <section className="h-[80vh] w-full bg-[url(images/hero.jpg)] bg-center bg-cover">
           <div className="w-full h-full bg-black/50">
             <div className="container px-4 md:px-0 flex flex-col justify-center h-full text-white gap-6">
-              <h4>For Rent $70 Per day</h4>
+              <h4>For Rent 250K Per day</h4>
               <h1 className=" text-5xl font-semibold">
                 Reserved Now and Get 50% <br />
                 Off
@@ -107,7 +107,7 @@ const HomePage = () => {
               </div>
               <div className="flex items-center gap-2 w-1/2">
                 <FaCircleCheck size={12} color="#FBBF24" />
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>High quality service</p>
               </div>
             </div>
           </div>
