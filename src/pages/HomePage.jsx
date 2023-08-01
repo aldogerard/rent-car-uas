@@ -90,7 +90,7 @@ const HomePage = () => {
             <h3 className="text-xl lg:text-2xl text-primary font-semibold">About Us</h3>
             <h1 className="text-2xl lg:text-3xl font-bold">Welcome to Rent Car Service</h1>
             <p className="text-gray-500 font-light text-sm mt-2">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum fuga cupiditate, deleniti officia consectetur laboriosam omnis tempora ad amet modi obcaecati velit reprehenderit! Enim, architecto?
+              We aim to offer car rental services of the highest quality, with flexible duration options, to ensure that our users feel completely comfortable throughout their car rental experience.
             </p>
             <div className="text-gray-500 font-light text-xs lg:text-sm mt-4 flex flex-wrap gap-y-2 ">
               <div className="flex items-center gap-2 w-1/2">

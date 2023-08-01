@@ -12,17 +12,44 @@ const HistoryPage = () => {
 
   const [loading, setIsLoading] = useState(true);
 
+  const [limit, setLimit] = useState([]);
+
   const getData = async () => {
     const datas = await axios.get(`https://api-rent-car.vercel.app/order/users/${id}`);
     const response = datas.data.data;
-    setDatas(response);
+    setDatas(response != null ? response.sort((a, b) => new Date(a.tanggalOrder[0]).getTime() - new Date(b.tanggalOrder[0]).getTime()) : []);
+
     setIsLoading(false);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
+    // time();
   }, []);
+
+  // const time = () => {
+  //   let limitTime = 1000 * 60 * 0.2;
+
+  //   let curTime = new Date().getTime();
+
+  //   let maxTime = new Date(curTime + limitTime).getTime();
+
+  //   const countDown = setInterval(() => {
+  //     let nowTime = new Date().getTime();
+  //     let selisih = maxTime - nowTime;
+
+  //     let minutes = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60));
+  //     let seconds = Math.floor((selisih % (1000 * 60)) / 1000);
+
+  //     setLimit(minutes + ":" + seconds);
+
+  //     if (selisih < 0) {
+  //       clearInterval(countDown);
+  //       setLimit("00:00");
+  //     }
+  //   }, 1000);
+  // };
 
   const loadDatas = () => {
     let count = 0;
@@ -41,6 +68,7 @@ const HistoryPage = () => {
             <img src={data.responseMobil.url} alt="pict car" className="w-full lg:w-1/2 object-contain h-52" />
             <div className="px-4 lg:w-1/2">
               <h1 className="text-xl md:text-2xl font-medium pb-2">{data.responseMobil.name}</h1>
+              {/* {filter === "pending" && <h1 className="text-base text-rose-500 pb-2">{limit}</h1>} */}
               <div className="flex flex-wrap justify-between items-center gap-4 ">
                 <div className="flex flex-col w-[47%]">
                   <h1 className="text-sm font-normal">Start Order</h1>
