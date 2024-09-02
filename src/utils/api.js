@@ -8,8 +8,8 @@ export const getDataUsers = async (id = "") => {
 
 export const getDataCars = async () => {
   const res = await axios.get("https://api-rent-car.vercel.app/product");
-  const data = res.data.data;
-  return data;
+  const data = res.data;
+  return data.status == 400 ? [] : data.data;
 };
 
 export const getDataCarsById = async (id) => {

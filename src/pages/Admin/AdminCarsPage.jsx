@@ -22,8 +22,7 @@ const AdminCarsPage = () => {
   const getCars = () => {
     getDataCars()
       .then((res) => {
-        // setCars(res);
-        setCars(res != null ? res.sort((a, b) => a.price - b.price) : {});
+        setCars(res.length > 0 ? res.sort((a, b) => a.price - b.price) : []);
       })
       .finally(() => {
         setIsLoading(false);
@@ -50,39 +49,42 @@ const AdminCarsPage = () => {
   };
 
   const loadData = () => {
-    return cars.map((res, i) => (
-      <tr key={res.id} className="text-sm border hover:bg-gray-100">
-        <td className="capitalize p-4 ">
-          <img
-            src={res.imageUrl}
-            alt=""
-            className="w-[7rem] h-[5rem] object-contain"
-          />
-        </td>
-        <td className=" p-4">{res.name}</td>
-        <td className=" p-4">{res.brand}</td>
-        <td className=" p-4">{res.type}</td>
-        <td className=" p-4">{res.year}</td>
-        <td className=" p-4">
-          <FormatRupiah value={res.price} />
-        </td>
-        <td className=" p-4">
-          <div className="flex items-center gap-4">
-            <Link to={`/admin/cars/${res.id}`}>
-              <FaArrowUpRightFromSquare
-                size={16}
-                className="text-emerald-400 cursor-pointer"
-              />
-            </Link>
-            <FaTrashCan
-              size={16}
-              className=" text-rose-400 cursor-pointer"
-              onClick={() => deleteData(res.id)}
+    return (
+      cars.length > 0 &&
+      cars.map((res, i) => (
+        <tr key={res.id} className="text-sm border hover:bg-gray-100">
+          <td className="capitalize p-4 ">
+            <img
+              src={res.imageUrl}
+              alt=""
+              className="w-[7rem] h-[5rem] object-contain"
             />
-          </div>
-        </td>
-      </tr>
-    ));
+          </td>
+          <td className=" p-4">{res.name}</td>
+          <td className=" p-4">{res.brand}</td>
+          <td className=" p-4">{res.type}</td>
+          <td className=" p-4">{res.year}</td>
+          <td className=" p-4">
+            <FormatRupiah value={res.price} />
+          </td>
+          <td className=" p-4">
+            <div className="flex items-center gap-4">
+              <Link to={`/admin/cars/${res.id}`}>
+                <FaArrowUpRightFromSquare
+                  size={16}
+                  className="text-emerald-400 cursor-pointer"
+                />
+              </Link>
+              <FaTrashCan
+                size={16}
+                className=" text-rose-400 cursor-pointer"
+                onClick={() => deleteData(res.id)}
+              />
+            </div>
+          </td>
+        </tr>
+      ))
+    );
   };
 
   return (
@@ -116,13 +118,14 @@ const AdminCarsPage = () => {
             </tr>
           </thead>
           <tbody className="">
-            {!isLoading && loadData()}
-            {cars == null && (
+            {cars.length <= 0 ? (
               <tr className=" ">
-                <td colSpan={5} className=" py-6 text-center ">
+                <td colSpan={7} className=" py-6 text-center">
                   Cars not found
                 </td>
               </tr>
+            ) : (
+              !isLoading && loadData()
             )}
           </tbody>
         </table>

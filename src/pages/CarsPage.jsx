@@ -29,7 +29,9 @@ const CarsPage = () => {
 
   const loadDatas = () => {
     if (datas.length == null)
-      return <h1 className="text-2xl font-light py-6 mx-auto">Loading ....</h1>;
+      return (
+        <h1 className="text-2xl font-light py-6 mx-auto">Card Not Found</h1>
+      );
     return (
       datas != null &&
       datas.map((data, i) => (
