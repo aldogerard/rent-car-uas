@@ -16,7 +16,7 @@ const AdminEditCarsPage = () => {
   const getData = () => {
     getDataCarsById(id).then((res) => {
       setData(res);
-      setCarPreview(res.url);
+      setCarPreview(res.imageUrl);
       setcarImage(res.images);
     });
   };
@@ -66,16 +66,35 @@ const AdminEditCarsPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="flex flex-wrap">
             <div className="flex mx-auto justify-center flex-wrap gap-6">
-              <img src={carPreview} alt="preview" className="w-64 h-36 object-contain" />
+              <img
+                src={carPreview}
+                alt="preview"
+                className="w-64 h-36 object-contain"
+              />
               <label htmlFor="carImage">
                 <div className="bg-gray-100 px-6 cursor-pointer h-36 flex justify-center items-center border-dashed border border-black/50 rounded-lg">
                   <h1 className="text-sm font-light">Select Car Image</h1>
                 </div>
               </label>
-              <input type="file" className="hidden" accept="image/*" name="carImage" id="carImage" onChange={(e) => handleChange(e)} />
+              <input
+                type="file"
+                className="hidden"
+                accept="image/*"
+                name="carImage"
+                id="carImage"
+                onChange={(e) => handleChange(e)}
+              />
             </div>
             <div className="w-full flex mx-auto flex-wrap gap-x-6 gap-y-3 mt-6 md:max-w-lg lg:max-w-5xl">
-              {message !== "" && <div className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${status == 200 ? "bg-green-200" : "bg-red-200"} `}>{message}</div>}
+              {message !== "" && (
+                <div
+                  className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${
+                    status == 200 ? "bg-green-200" : "bg-red-200"
+                  } `}
+                >
+                  {message}
+                </div>
+              )}
               <div className="w-full lg:w-[48%]">
                 <label htmlFor="nama" className="font-medium text-md -mb-4">
                   Name
@@ -156,7 +175,10 @@ const AdminEditCarsPage = () => {
                   onChange={(e) => setData({ ...data, price: e.target.value })}
                 />
               </div>
-              <button className="bg-primary w-full mx-auto mt-2 py-4 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500" type="submit">
+              <button
+                className="bg-primary w-full mx-auto mt-2 py-4 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500"
+                type="submit"
+              >
                 Edit
               </button>
             </div>

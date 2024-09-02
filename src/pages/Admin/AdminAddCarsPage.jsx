@@ -58,7 +58,11 @@ const AdminAddCarsPage = () => {
           <div className="flex flex-wrap">
             <div className="flex mx-auto justify-center flex-wrap gap-6">
               <div className="flex flex-col items-center">
-                <img src={carPreview} alt="" className="w-64 max-h-[9rem] object-contain " />
+                <img
+                  src={carPreview}
+                  alt=""
+                  className="w-64 max-h-[9rem] object-contain "
+                />
                 <p className="tetx-center text-sm">{carImage.name}</p>
               </div>
 
@@ -67,10 +71,26 @@ const AdminAddCarsPage = () => {
                   <h1 className="text-sm font-light">Select Car Image</h1>
                 </div>
               </label>
-              <input type="file" required className="hidden" accept="image/*" name="carImage" id="carImage" onChange={(e) => handleChange(e)} />
+              <input
+                type="file"
+                required
+                className="hidden"
+                accept="image/*"
+                name="carImage"
+                id="carImage" 
+                onChange={(e) => handleChange(e)}
+              />
             </div>
             <div className="w-full flex mx-auto flex-wrap gap-x-6 gap-y-3 mt-6 md:max-w-lg lg:max-w-5xl">
-              {message !== "" && <div className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${status == 200 ? "bg-green-200" : "bg-red-200"} `}>{message}</div>}
+              {message !== "" && (
+                <div
+                  className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${
+                    status == 200 ? "bg-green-200" : "bg-red-200"
+                  } `}
+                >
+                  {message}
+                </div>
+              )}
               <div className="w-full lg:w-[48%]">
                 <label htmlFor="nama" className="font-medium text-md -mb-4">
                   Name
@@ -96,7 +116,7 @@ const AdminAddCarsPage = () => {
                   name="brand"
                   required
                   value={data.brand}
-                  placeholder="Brand*"
+                  placeholder="Brand"
                   className="w-full placeholder:text-base px-3 py-4 focus:outline-none shadow-sm border border-black/30 rounded-md text-base"
                   autoComplete="off"
                   type="text"
@@ -151,7 +171,10 @@ const AdminAddCarsPage = () => {
                   onChange={(e) => setData({ ...data, price: e.target.value })}
                 />
               </div>
-              <button className="bg-primary w-full mx-auto mt-2 py-4 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500" type="submit">
+              <button
+                className="bg-primary w-full mx-auto mt-2 py-4 text-center text-black rounded-md transition-all duration-150 focus:bg-amber-500"
+                type="submit"
+              >
                 Add
               </button>
             </div>

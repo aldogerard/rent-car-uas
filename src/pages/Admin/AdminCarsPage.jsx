@@ -51,7 +51,11 @@ const AdminCarsPage = () => {
     return cars.map((res, i) => (
       <tr key={res.id} className="text-sm border hover:bg-gray-100">
         <td className="capitalize p-4 ">
-          <img src={res.url} alt="" className="w-[7rem] h-[5rem] object-contain" />
+          <img
+            src={res.imageUrl}
+            alt=""
+            className="w-[7rem] h-[5rem] object-contain"
+          />
         </td>
         <td className=" p-4">{res.name}</td>
         <td className=" p-4">{res.brand}</td>
@@ -63,9 +67,16 @@ const AdminCarsPage = () => {
         <td className=" p-4">
           <div className="flex items-center gap-4">
             <Link to={`/admin/cars/${res.id}`}>
-              <FaArrowUpRightFromSquare size={16} className="text-emerald-400 cursor-pointer" />
+              <FaArrowUpRightFromSquare
+                size={16}
+                className="text-emerald-400 cursor-pointer"
+              />
             </Link>
-            <FaTrashCan size={16} className=" text-rose-400 cursor-pointer" onClick={() => deleteData(res.id)} />
+            <FaTrashCan
+              size={16}
+              className=" text-rose-400 cursor-pointer"
+              onClick={() => deleteData(res.id)}
+            />
           </div>
         </td>
       </tr>
@@ -80,7 +91,15 @@ const AdminCarsPage = () => {
           <h1 className="font-medium">Add Cars</h1>
         </Link>
       </div>
-      {message !== "" && <div className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${status == 200 ? "bg-green-200" : "bg-red-200"} `}>{message}</div>}
+      {message !== "" && (
+        <div
+          className={` transition-all mb-4 duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${
+            status == 200 ? "bg-green-200" : "bg-red-200"
+          } `}
+        >
+          {message}
+        </div>
+      )}
       <div className="w-full flex flex-wrap overflow-x-auto rounded-lg shadow-md">
         <table className="w-full bg-gray-50 overflow-x-scroll border-collapse">
           <thead className="">

@@ -48,17 +48,17 @@ const AboutPage = () => {
               <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaShieldHeart size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">We Are Passionate</h1>
-                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">We're commited to providing an extraordinary travel experience. Car rental that prioritizes customer satisfaction</p>
               </div>
               <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaClock size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">Always On Time</h1>
-                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">We provide exceptional services that are present when you need them the most and ensure a quick response to your needs</p>
               </div>
               <div className="w-full flex flex-col items-center gap-4 md:w-[45%] lg:w-[30%]">
                 <FaUsersGear size={56} color="#FBBF24" />
                 <h1 className="text-xl font-bold uppercase">Professional Services</h1>
-                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem deserunt culpa magni ipsum ad?</p>
+                <p className="text-center max-w-sm text-xs text-gray-500 -mt-2 ">Feel the excellence of our service, with our unrivaled car rental service for your unforgettable trip</p>
               </div>
             </div>
           </div>

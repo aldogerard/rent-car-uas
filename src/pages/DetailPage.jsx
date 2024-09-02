@@ -21,7 +21,8 @@ const DetailPage = () => {
     endDate: null,
   });
 
-  const duration = (new Date(value.endDate) - new Date(value.startDate)) / 1000 / 60 / 60 / 24;
+  const duration =
+    (new Date(value.endDate) - new Date(value.startDate)) / 1000 / 60 / 60 / 24;
   const totalPrice = datas.price * duration;
 
   const getTanggalOrder = () => {
@@ -41,7 +42,9 @@ const DetailPage = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`https://api-rent-car.vercel.app/product/${id}`);
+      const response = await axios.get(
+        `https://api-rent-car.vercel.app/product/${id}`
+      );
       const data = response.data.data;
       setDatas(data);
     } catch (error) {
@@ -55,7 +58,10 @@ const DetailPage = () => {
   }, []);
 
   const checkOrder = async () => {
-    if (new Date(value.startDate) < new Date() || new Date(value.endDate) < new Date()) {
+    if (
+      new Date(value.startDate) < new Date() ||
+      new Date(value.endDate) < new Date()
+    ) {
       setMessage("Date must be rent from tomorrow");
       setStatus(400);
       setTimeout(() => {
@@ -65,7 +71,9 @@ const DetailPage = () => {
       return;
     }
 
-    if (new Date(value.startDate).getTime() === new Date(value.endDate).getTime()) {
+    if (
+      new Date(value.startDate).getTime() === new Date(value.endDate).getTime()
+    ) {
       setMessage("Rent must be minimum 1 day");
       setStatus(400);
       setTimeout(() => {
@@ -77,9 +85,12 @@ const DetailPage = () => {
 
     const tanggalOrder = getTanggalOrder();
 
-    const response = await axios.post(`https://api-rent-car.vercel.app/order/check/${id}`, {
-      tanggalOrder,
-    });
+    const response = await axios.post(
+      `https://api-rent-car.vercel.app/order/check/${id}`,
+      {
+        tanggalOrder,
+      }
+    );
     const datas = response.data;
 
     setMessage(datas.message);
@@ -116,13 +127,24 @@ const DetailPage = () => {
     if (datas == null) return <h1>Loading ....</h1>;
     return (
       <div className=" flex flex-wrap justify-center gap-4 ">
-        <div className={` transition-all duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${message === "" ? "hidden" : "block"} ${status == 400 ? "bg-red-200" : "bg-green-200"} `} type="submit">
+        <div
+          className={` transition-all duration-500 w-full py-3 font-medium text-lg text-center text-black rounded-md ${
+            message === "" ? "hidden" : "block"
+          } ${status == 400 ? "bg-red-200" : "bg-green-200"} `}
+          type="submit"
+        >
           {message}
         </div>
-        <img src={datas.url} alt="" className="w-full lg:w-[47%] -z-20 lg:h-72 object-contain h-52 " />
+        <img
+          src={datas.imageUrl}
+          alt=""
+          className="w-full lg:w-[47%] -z-20 lg:h-72 object-contain h-52 "
+        />
         <div className="w-full lg:w-[47%] flex flex-col gap-1">
           <div className="flex items-center justify-between">
-            <h1 className="font-semibold text-4xl capitalize pb-2">{datas.name}</h1>
+            <h1 className="font-semibold text-4xl capitalize pb-2">
+              {datas.name}
+            </h1>
             <Link to={`/info/${datas.id}`} className="cursor-pointer">
               <IoInformationCircleOutline size={28} />
             </Link>
@@ -154,9 +176,18 @@ const DetailPage = () => {
           {!check && (
             <>
               <div className="border border-black/20 rounded-sm mt-2 cursor-pointer w-full">
-                <Datepicker value={value} onChange={(e) => setValue(e)} primaryColor="amber" className="w-full" />
+                <Datepicker
+                  value={value}
+                  onChange={(e) => setValue(e)}
+                  primaryColor="amber"
+                  className="w-full"
+                />
               </div>
-              <button onClick={checkOrder} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
+              <button
+                onClick={checkOrder}
+                className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500"
+                type="submit"
+              >
                 check order
               </button>
             </>
@@ -194,7 +225,11 @@ const DetailPage = () => {
                   <FormatRupiah value={totalPrice} />
                 </div>
               </div>
-              <button onClick={orderCar} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
+              <button
+                onClick={orderCar}
+                className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500"
+                type="submit"
+              >
                 Order Car
               </button>
             </div>
@@ -207,7 +242,9 @@ const DetailPage = () => {
   return (
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
-        <section className="container px-4 md:px-0 py-14">{loadDatas()}</section>
+        <section className="container px-4 md:px-0 py-14">
+          {loadDatas()}
+        </section>
       </main>
     </>
   );

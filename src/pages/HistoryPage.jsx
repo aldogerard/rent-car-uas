@@ -15,9 +15,19 @@ const HistoryPage = () => {
   const [limit, setLimit] = useState([]);
 
   const getData = async () => {
-    const datas = await axios.get(`https://api-rent-car.vercel.app/order/users/${id}`);
+    const datas = await axios.get(
+      `https://api-rent-car.vercel.app/order/users/${id}`
+    );
     const response = datas.data.data;
-    setDatas(response != null ? response.sort((a, b) => new Date(a.tanggalOrder[0]).getTime() - new Date(b.tanggalOrder[0]).getTime()) : []);
+    setDatas(
+      response != null
+        ? response.sort(
+            (a, b) =>
+              new Date(a.tanggalOrder[0]).getTime() -
+              new Date(b.tanggalOrder[0]).getTime()
+          )
+        : []
+    );
 
     setIsLoading(false);
   };
@@ -54,20 +64,45 @@ const HistoryPage = () => {
   const loadDatas = () => {
     let count = 0;
 
-    if (datas == []) return <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">Loading...</h1>;
-    if (datas == null) return <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">Data Not Found</h1>;
+    if (datas == [])
+      return (
+        <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">
+          Loading...
+        </h1>
+      );
+    if (datas == null)
+      return (
+        <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">
+          Data Not Found
+        </h1>
+      );
     datas.map((data, i) => {
       if (data.status !== filter) count++;
     });
-    if (count === datas.length) return <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">Data Not Found</h1>;
+    if (count === datas.length)
+      return (
+        <h1 className="text-2xl text-center  w-full md:text-3xl font-semibold pt-6 lg:pt-20 lg:pb-[3.4rem]">
+          Data Not Found
+        </h1>
+      );
+    console.log(datas);
 
     return datas.map(
       (data, i) =>
         data.status === filter && (
-          <div key={data.id} className="flex flex-col lg:flex-row border rounded-md shadow-sm lg:items-center justify-center w-full py-2 pb-4">
-            <img src={data.responseMobil.url} alt="pict car" className="w-full lg:w-1/2 object-contain h-52" />
+          <div
+            key={data.id}
+            className="flex flex-col lg:flex-row border rounded-md shadow-sm lg:items-center justify-center w-full py-2 pb-4"
+          >
+            <img
+              src={data.responseMobil.url}
+              alt="pict car"
+              className="w-full lg:w-1/2 object-contain h-52"
+            />
             <div className="px-4 lg:w-1/2">
-              <h1 className="text-xl md:text-2xl font-medium pb-2">{data.responseMobil.name}</h1>
+              <h1 className="text-xl md:text-2xl font-medium pb-2">
+                {data.responseMobil.name}
+              </h1>
               {/* {filter === "pending" && <h1 className="text-base text-rose-500 pb-2">{limit}</h1>} */}
               <div className="flex flex-wrap justify-between items-center gap-4 ">
                 <div className="flex flex-col w-[47%]">
@@ -95,13 +130,21 @@ const HistoryPage = () => {
                   </div>
                 </div>
                 {data.status === "pending" && (
-                  <Link to={`/payment/${data.id}`} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
+                  <Link
+                    to={`/payment/${data.id}`}
+                    className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500"
+                    type="submit"
+                  >
                     Pay order
                     <FaArrowRightLong size={14} />
                   </Link>
                 )}
                 {data.status === "selesai" && (
-                  <Link to={`/detail/${data.idMobil}`} className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500" type="submit">
+                  <Link
+                    to={`/detail/${data.idMobil}`}
+                    className="bg-primary  mt-2 mb-2 flex justify-center items-center gap-2 w-full py-2 text-center text-black rounded-sm transition-all duration-150 focus:bg-amber-500"
+                    type="submit"
+                  >
                     Order again
                     <FaArrowRightLong size={14} />
                   </Link>
@@ -123,17 +166,28 @@ const HistoryPage = () => {
             </h1>
           </div>
           <div className="m-2 flex w-full max-w-min  mx-auto gap-2 rounded-lg bg-amber-300 p-[6px] ">
-            <button className={`btn ${filter === "pending" && "bg-white "}`} onClick={() => setFilter("pending")}>
+            <button
+              className={`btn ${filter === "pending" && "bg-white "}`}
+              onClick={() => setFilter("pending")}
+            >
               Pending
             </button>
-            <button className={`btn  ${filter === "proses" && "bg-white "}`} onClick={() => setFilter("proses")}>
+            <button
+              className={`btn  ${filter === "proses" && "bg-white "}`}
+              onClick={() => setFilter("proses")}
+            >
               Process
             </button>
-            <button className={`btn  ${filter === "selesai" && "bg-white "}`} onClick={() => setFilter("selesai")}>
+            <button
+              className={`btn  ${filter === "selesai" && "bg-white "}`}
+              onClick={() => setFilter("selesai")}
+            >
               Finish
             </button>
           </div>
-          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">{loading ? <h1>Loading ....</h1> : loadDatas()}</div>
+          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">
+            {loading ? <h1>Loading ....</h1> : loadDatas()}
+          </div>
         </section>
       </main>
     </>

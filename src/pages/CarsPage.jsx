@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 
 const CarsPage = () => {
   const [datas, setDatas] = React.useState({});
-  const [auth, setAuth] = React.useState(JSON.parse(sessionStorage.getItem("auth")) || "");
+  const [auth, setAuth] = React.useState(
+    JSON.parse(sessionStorage.getItem("auth")) || ""
+  );
 
   const getDatas = async () => {
     try {
-      const response = await axios.get("https://api-rent-car.vercel.app/product");
+      const response = await axios.get(
+        "https://api-rent-car.vercel.app/product"
+      );
       const data = response.data.data;
       setDatas(data != null ? data.sort((a, b) => a.price - b.price) : {});
     } catch (error) {
@@ -24,14 +28,24 @@ const CarsPage = () => {
   }, []);
 
   const loadDatas = () => {
-    if (datas.length == null) return <h1 className="text-2xl font-light py-6 mx-auto">Loading ....</h1>;
+    if (datas.length == null)
+      return <h1 className="text-2xl font-light py-6 mx-auto">Loading ....</h1>;
     return (
       datas != null &&
       datas.map((data, i) => (
-        <div key={data.id} className=" w-full md:w-[47%] lg:w-[32%]  flex flex-col items-center rounded-lg overflow-hidden shadow-sm border border-black/20">
-          <img src={data.url} alt="" className="w-full object-contain h-full min-h-[12rem] max-h-[15rem] p-2 " />
+        <div
+          key={data.id}
+          className=" w-full md:w-[47%] lg:w-[32%]  flex flex-col items-center rounded-lg overflow-hidden shadow-sm border border-black/20"
+        >
+          <img
+            src={data.imageUrl}
+            alt=""
+            className="w-full object-contain h-full min-h-[12rem] max-h-[15rem] p-2 "
+          />
           <div className=" w-full h-full px-4 pb-2 flex flex-col justify-end">
-            <h1 className="text-center pb-2 font-medium text-lg">{data.name}</h1>
+            <h1 className="text-center pb-2 font-medium text-lg">
+              {data.name}
+            </h1>
             <div className="flex flex-wrap items-center justify-between gap-4 pb-4">
               <div className="flex items-center gap-2 bg-gray-200 rounded-sm p-2 w-[47%]">
                 <FaCircleCheck size={18} color="#FBBF24" />
@@ -73,7 +87,9 @@ const CarsPage = () => {
               Cars <span className="text-primary font-bold">Collection</span>
             </h1>
           </div>
-          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">{loadDatas()}</div>
+          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">
+            {loadDatas()}
+          </div>
         </section>
       </main>
     </>

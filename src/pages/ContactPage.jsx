@@ -19,8 +19,8 @@ const ContactPage = () => {
       const response = post.data;
 
       if (response.status === 200) {
-        e.target.reset();
-        return alert(`Thank you ${e.target.name.value} for your message!`);
+        alert(`Thank you ${e.target.name.value} for your message!`);
+        return e.target.reset();
       } else {
         return alert(`Sorry ${e.target.name.value} your message is not sent!`);
       }

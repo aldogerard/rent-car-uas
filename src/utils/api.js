@@ -30,14 +30,25 @@ export const getDataMessage = async () => {
   return data;
 };
 
-export const addProduct = async (formData) => {
-  const res = await axios.post(`http://localhost:3000/product`, formData);
+export const addProduct = async (datas) => {
+  const res = await axios.post(
+    `https://api-rent-car.vercel.app/product`,
+    datas
+  );
   const data = res.data;
   return data;
 };
 
 export const updateProduct = async (id, formData) => {
-  const res = await axios.patch(`http://localhost:3000/product/${id}`, formData);
+  const res = await axios.patch(
+    `https://api-rent-car.vercel.app/product/${id}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
   const data = res.data;
   return data;
 };
