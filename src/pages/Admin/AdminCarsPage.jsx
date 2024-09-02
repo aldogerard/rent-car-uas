@@ -33,7 +33,9 @@ const AdminCarsPage = () => {
   const deleteData = async (id) => {
     const confirm = window.confirm("Are you sure you want to delete this car?");
     if (!confirm) return;
-    const data = await axios.delete(`http://localhost:3000/product/${id}`);
+    const data = await axios.delete(
+      `https://api-rent-car.vercel.app/product/${id}`
+    );
     setStatus(data.data.status);
     setMessage(data.data.message);
 
