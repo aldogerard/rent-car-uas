@@ -5,6 +5,8 @@ import { FaArrowRightLong, FaCircleCheck } from "react-icons/fa6";
 import axios from "axios";
 import { FormatRupiah } from "@arismun/format-rupiah";
 
+import hero from "../../public/images/hero.jpg";
+
 const HomePage = () => {
   const [datas, setDatas] = React.useState({});
   const [auth, setAuth] = React.useState(
@@ -85,7 +87,10 @@ const HomePage = () => {
   return (
     <>
       <main className="pt-[50px] md:pt-[150px] lg:pt-[130px] -z-50">
-        <section className="h-[80vh] w-full bg-[url(images/hero.jpg)] bg-center bg-cover">
+        <section
+          className="h-[80vh] w-full bg-center bg-cover"
+          style={{ backgroundImage: `url(${hero})` }}
+        >
           <div className="w-full h-full bg-black/50">
             <div className="container px-4 md:px-0 flex flex-col justify-center h-full text-white gap-6">
               <h4>For Rent 250K Per day</h4>
