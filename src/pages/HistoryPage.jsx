@@ -184,7 +184,7 @@ const HistoryPage = () => {
               Finish
             </button>
           </div>
-          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">
+          <div className="w-full flex flex-wrap justify-start md:justify-between pt-4 mb-6 gap-4">
             {loading ? <h1>Loading ....</h1> : loadDatas()}
           </div>
         </section>

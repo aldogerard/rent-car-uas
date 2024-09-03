@@ -5,7 +5,7 @@ import { FaArrowRightLong, FaCircleCheck } from "react-icons/fa6";
 import axios from "axios";
 import { FormatRupiah } from "@arismun/format-rupiah";
 
-import hero from "../../public/images/hero.jpg";
+import hero from "/images/hero.jpg";
 
 const HomePage = () => {
   const [datas, setDatas] = React.useState({});
