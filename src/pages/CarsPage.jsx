@@ -89,7 +89,7 @@ const CarsPage = () => {
               Cars <span className="text-primary font-bold">Collection</span>
             </h1>
           </div>
-          <div className="w-full flex flex-wrap justify-center md:justify-between pt-4 mb-6 gap-4">
+          <div className="w-full flex flex-wrap justify-center md:justify-start pt-4 mb-6 gap-4">
             {loadDatas()}
           </div>
         </section>
