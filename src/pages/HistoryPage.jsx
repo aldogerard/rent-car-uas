@@ -85,7 +85,6 @@ const HistoryPage = () => {
           Data Not Found
         </h1>
       );
-    console.log(datas);
 
     return datas.map(
       (data, i) =>
